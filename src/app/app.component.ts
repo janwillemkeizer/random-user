@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RandomUser, Result } from './random-user';
+import { RandomUser } from './random-user';
 import { RandomUserService } from './random-user.service';
-import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-root',
@@ -13,16 +12,11 @@ export class AppComponent implements OnInit {
 
   constructor(private randomUserService: RandomUserService) { }
 
-  log() {
-    console.log(this.randomUser)
-  }
-
   ngOnInit(): void {
     this.getUser()
-    console.log(this.randomUser)
   }
 
-  getUser() {
+  getUser(): void {
     this.randomUserService.getRandomUser().subscribe(
       fetchedUser => this.randomUser = fetchedUser
     )
